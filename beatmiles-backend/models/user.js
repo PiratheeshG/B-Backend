@@ -1,4 +1,4 @@
-// backend/models/user.js
+// backend/models/User.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -43,4 +43,5 @@ UserSchema.methods.comparePassword = function (candidatePassword) {
 };
 
 module.exports = mongoose.model('User', UserSchema);
+
 
