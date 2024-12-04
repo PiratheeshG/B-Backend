@@ -1,4 +1,4 @@
-// server.js
+// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -15,11 +15,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
     credentials: true
 }));
 app.use(session({
-    secret: process.env.JWT_SECRET,
+    secret: process.env.JWT_SECRET, // Replace with your JWT secret
     resave: false,
     saveUninitialized: false
 }));
@@ -34,7 +34,7 @@ app.use('/auth', authRoutes);
 app.use('/workouts', workoutRoutes);
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, { // Replace with your MongoDB URI
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -45,3 +45,4 @@ mongoose.connect(process.env.MONGODB_URI, {
 }).catch(err => {
     console.error('MongoDB connection error:', err);
 });
+

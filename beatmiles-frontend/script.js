@@ -1,4 +1,4 @@
-// script.js
+// frontend/script.js
 
 const API_URL = 'https://your-backend-app.azurewebsites.net'; // Replace with your backend URL
 
@@ -199,7 +199,21 @@ function authenticateWith(provider) {
     window.location.href = `${API_URL}/auth/${provider}`;
 }
 
+// Page Protection for Workout Log
+function checkAndProtectPage() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("You must be logged in to access this page.");
+        window.location.href = "login.html";
+    } else {
+        checkAuth();
+        displayWorkouts();
+    }
+}
+
 // Initial Check
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
 });
+
+

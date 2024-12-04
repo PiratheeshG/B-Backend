@@ -1,4 +1,4 @@
-// config/passport.js
+// backend/config/passport.js
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -39,8 +39,8 @@ module.exports = function (passport) {
 
     // Google Strategy
     passport.use(new GoogleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID: process.env.GOOGLE_CLIENT_ID, // Replace with your Google Client ID
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Replace with your Google Client Secret
         callbackURL: "/auth/google/callback"
     }, async (accessToken, refreshToken, profile, done) => {
         try {
@@ -60,8 +60,8 @@ module.exports = function (passport) {
 
     // Facebook Strategy
     passport.use(new FacebookStrategy({
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        clientID: process.env.FACEBOOK_CLIENT_ID, // Replace with your Facebook Client ID
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET, // Replace with your Facebook Client Secret
         callbackURL: "/auth/facebook/callback",
         profileFields: ['id', 'emails', 'name']
     }, async (accessToken, refreshToken, profile, done) => {
@@ -82,8 +82,8 @@ module.exports = function (passport) {
 
     // GitHub Strategy
     passport.use(new GitHubStrategy({
-        clientID: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        clientID: process.env.GITHUB_CLIENT_ID, // Replace with your GitHub Client ID
+        clientSecret: process.env.GITHUB_CLIENT_SECRET, // Replace with your GitHub Client Secret
         callbackURL: "/auth/github/callback"
     }, async (accessToken, refreshToken, profile, done) => {
         try {
@@ -101,3 +101,4 @@ module.exports = function (passport) {
         }
     }));
 };
+
