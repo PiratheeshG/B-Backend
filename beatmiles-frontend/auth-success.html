@@ -1,0 +1,27 @@
+<!-- frontend/auth-success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication Success</title>
+</head>
+<body>
+    <script>
+        // Extract token from URL
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        if (token) {
+            // Save token to localStorage
+            localStorage.setItem('token', token);
+            // Redirect to homepage
+            window.location.href = 'index.html';
+        } else {
+            alert('Authentication failed.');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
+
+
+
